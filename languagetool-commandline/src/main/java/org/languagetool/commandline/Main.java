@@ -53,7 +53,7 @@ class Main {
 
   private final CommandLineOptions options;
   
-  private MultiThreadedJLanguageTool lt;
+  private JLanguageTool lt;
   private boolean profileRules;
   private boolean bitextMode;
   private MultiThreadedJLanguageTool srcLt;
@@ -66,7 +66,7 @@ class Main {
     bitextMode = false;
     srcLt = null;
     bRules = null;
-    lt = new MultiThreadedJLanguageTool(options.getLanguage(), options.getMotherTongue());
+    lt = new JLanguageTool(options.getLanguage(), options.getMotherTongue());
     lt.setCleanOverlappingMatches(false);
     if (options.getRuleFile() != null) {
       addExternalRules(options.getRuleFile());
@@ -115,7 +115,7 @@ class Main {
   
   private void cleanUp() {
     if (lt != null) {
-      lt.shutdown();
+      // lt.shutdown();
     }
     if (srcLt != null) {
       srcLt.shutdown();
